@@ -29,20 +29,27 @@ class MainWindow(base1, form1):
             super(base1, self).__init__()
             # loadUi("Main.ui",self)
             self.setupUi(self)
+            self.radioButton_color.setChecked(True)
             self.pushButton_filepath.clicked.connect(self.filepath)
             self.pushButton_filepath_add.clicked.connect(self.filepath_add)
             self.pushButton_exit.clicked.connect(self.logout)
+            self.pushButton_histogram.clicked.connect(self.histogram)
             self.pushButton_gaussianBlur.clicked.connect(self.gaussianBlur)
             self.pushButton_PixelBlending.clicked.connect(self.combination)
         except Exception as e:
             messagebox.showinfo("예외가 발생했습니다", e)
     def filesave(self,output_img):
         try:
+            global after_picture_path
+            if self.radioButton_gray.isChecked()==True:
+                output_img = cv.cvtColor(output_img, cv.COLOR_BGR2GRAY)
             data = im.fromarray(output_img)
             newfilename=pre_picture_path[0].split('.')
             newfilename[1]
             data.save(newfilename[0]+"_change."+newfilename[1])
             self.picture_after.setPixmap(QPixmap(newfilename[0]+"_change."+newfilename[1]))
+            after_picture_path=newfilename[0]+"_change."+newfilename[1]
+            print(after_picture_path)
         except Exception as e:
             messagebox.showinfo("예외가 발생했습니다", e)
 
@@ -54,7 +61,7 @@ class MainWindow(base1, form1):
             self.picture_pre.setPixmap(QPixmap(pre_picture_path[0]))
         except Exception as e:
             messagebox.showinfo("예외가 발생했습니다", e)
-
+    
     def filepath_add(self): # 파일 경로 지정하는 부분(파일 탐색기)
         try:
             global add_picture_path
@@ -63,9 +70,7 @@ class MainWindow(base1, form1):
             self.picture_add.setPixmap(QPixmap(add_picture_path[0]))
         except Exception as e:
             messagebox.showinfo("예외가 발생했습니다", e)
-
-
-    def gaussianBlur(self): # 가우시안 필터링 버튼 구동 하는 부분
+    def histogram(self):
         try:
             global pre_picture_path
             print(pre_picture_path[0])
@@ -82,6 +87,27 @@ class MainWindow(base1, form1):
             # 마지막으로 yCrCb2를 다시 BGR 형태로 변경합니다.
             yCrCbDst = cv.cvtColor(yCrCb2, cv.COLOR_YCrCb2BGR)
             self.filesave(yCrCbDst) # 파일 저장 및 출력
+        except Exception as e:
+            messagebox.showinfo("예외가 발생했습니다", e)
+
+    def gaussianBlur(self): # 가우시안 필터링 버튼 구동 하는 부분
+        try:
+            global pre_picture_path
+            print(pre_picture_path[0])
+            img=cv.imread(pre_picture_path[0])
+            img_ycrcb= cv.cvtColor(img, cv.COLOR_BGR2RGB)
+            # YCrCb 컬러 형태로 변환합니다.
+            yCrCb = cv.cvtColor(img_ycrcb, cv.COLOR_BGR2YCrCb)
+            # y, Cr, Cb로 컬러 영상을 분리 합니다.
+            y, Cr, Cb = cv.split(yCrCb)
+            # y값을 가우시안 필터링을 합니다.
+            equalizedY = cv.GaussianBlur(y,(5,5),0)
+            # equalizedY, Cr, Cb를 합쳐서 새로운 yCrCb 이미지를 만듭니다.
+            yCrCb2 = cv.merge([equalizedY, Cr, Cb])
+            # 마지막으로 yCrCb2를 다시 BGR 형태로 변경합니다.
+            yCrCbDst = cv.cvtColor(yCrCb2, cv.COLOR_YCrCb2BGR)
+            self.filesave(yCrCbDst) # 파일 저장 및 출력
+        
         except Exception as e:
             messagebox.showinfo("예외가 발생했습니다", e)
     
@@ -106,7 +132,7 @@ class MainWindow(base1, form1):
                 if(value>255):
                     value = 255
                 return value 
-            W=0.4   #가중치 설정
+            W=self.doubleSpinBox_W.value()   #가중치 설정
             #for문을 돌며 픽셀 블렌딩 연산 하기
             for h in range(RGB_img1.shape[0]):
                 for w in range(RGB_img1.shape[1]):
@@ -127,7 +153,7 @@ if __name__ == '__main__':
     win = MainWindow()
     widget = QtWidgets.QStackedWidget()
     widget.setFixedWidth(800)
-    widget.setFixedHeight(410)
+    widget.setFixedHeight(455)
     widget.addWidget(win)
     widget.show()
     app.exec_()
