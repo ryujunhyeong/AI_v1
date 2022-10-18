@@ -1,14 +1,14 @@
 import sys
+import os
+import cv2 as cv
+import numpy as np
 from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import *
 from PyQt5 import uic
 from PyQt5.QtGui import QPixmap
 from PyQt5.QtWidgets import QDialog, QApplication, QMainWindow
-import os
 from tkinter import messagebox
 from tkinter import Tk
-import cv2 as cv
-import numpy as np
 from PIL import Image as im
 root= Tk()
 root.withdraw()
@@ -49,7 +49,7 @@ class MainWindow(base1, form1):
     def filepath(self): # 파일 경로 지정하는 부분(파일 탐색기)
         try:
             global pre_picture_path
-            pre_picture_path=QFileDialog.getOpenFileName(self,'','','All File(*);;Picture(*.png *.jpg *.jpeg)')        
+            pre_picture_path=QFileDialog.getOpenFileName(self,'','','Picture(*.png *.jpg *.jpeg);;All File(*)')        
             self.lineEdit_filepath.setText(pre_picture_path[0])
             self.picture_pre.setPixmap(QPixmap(pre_picture_path[0]))
         except Exception as e:
@@ -58,7 +58,7 @@ class MainWindow(base1, form1):
     def filepath_add(self): # 파일 경로 지정하는 부분(파일 탐색기)
         try:
             global add_picture_path
-            add_picture_path=QFileDialog.getOpenFileName(self,'','','All File(*);;Picture(*.png *.jpg *.jpeg)')        
+            add_picture_path=QFileDialog.getOpenFileName(self,'','','Picture(*.png *.jpg *.jpeg);;All File(*)')        
             self.lineEdit_filepath_add.setText(add_picture_path[0])
             self.picture_add.setPixmap(QPixmap(add_picture_path[0]))
         except Exception as e:
