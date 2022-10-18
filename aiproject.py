@@ -35,6 +35,8 @@ class MainWindow(base1, form1):
             self.pushButton_exit.clicked.connect(self.logout)
             self.pushButton_histogram.clicked.connect(self.histogram)
             self.pushButton_gaussianBlur.clicked.connect(self.gaussianBlur)
+            self.pushButton_smooth.clicked.connect(self.smooth)
+            self.pushButton_unsharp.clicked.connect(self.unsharp)
             self.pushButton_PixelBlending.clicked.connect(self.combination)
         except Exception as e:
             messagebox.showinfo("예외가 발생했습니다", e)
@@ -111,6 +113,51 @@ class MainWindow(base1, form1):
         except Exception as e:
             messagebox.showinfo("예외가 발생했습니다", e)
     
+    def smooth(self):
+        try:
+            global pre_picture_path
+            print(pre_picture_path[0])
+            img=cv.imread(pre_picture_path[0])
+            img_ycrcb= cv.cvtColor(img, cv.COLOR_BGR2RGB)
+            # YCrCb 컬러 형태로 변환합니다.
+            yCrCb = cv.cvtColor(img_ycrcb, cv.COLOR_BGR2YCrCb)
+            # y, Cr, Cb로 컬러 영상을 분리 합니다.
+            y, Cr, Cb = cv.split(yCrCb)
+            # y값을 보존 스무딩를 합니다.
+            smoothing_mask = np.array([[1/16, 1/8, 1/16], [1/8, 1/4, 1/8], [1/16, 1/8, 1/16]])
+            smoothing_out = cv.filter2D(y, -1, smoothing_mask)
+
+            # equalizedY, Cr, Cb를 합쳐서 새로운 yCrCb 이미지를 만듭니다.
+            yCrCb2 = cv.merge([smoothing_out, Cr, Cb])
+            # 마지막으로 yCrCb2를 다시 BGR 형태로 변경합니다.
+            yCrCbDst = cv.cvtColor(yCrCb2, cv.COLOR_YCrCb2BGR)
+            self.filesave(yCrCbDst) # 파일 저장 및 출력
+        except Exception as e:
+            messagebox.showinfo("예외가 발생했습니다", e)
+
+    def unsharp(self):
+        try:
+            global pre_picture_path
+            print(pre_picture_path[0])
+            img=cv.imread(pre_picture_path[0])
+            img_ycrcb= cv.cvtColor(img, cv.COLOR_BGR2RGB)
+            # YCrCb 컬러 형태로 변환합니다.
+            yCrCb = cv.cvtColor(img_ycrcb, cv.COLOR_BGR2YCrCb)
+            # y, Cr, Cb로 컬러 영상을 분리 합니다.
+            y, Cr, Cb = cv.split(yCrCb)
+            # y값을 보존 스무딩를 합니다.
+            mean_img=cv.blur(y,(5,5))
+            edge_img=cv.addWeighted(y, 1.0, mean_img,-1.0, 0)
+            equalizedY=cv.addWeighted(y, 1.0, edge_img, 3.0, 0)
+            # equalizedY, Cr, Cb를 합쳐서 새로운 yCrCb 이미지를 만듭니다.
+            yCrCb2 = cv.merge([equalizedY, Cr, Cb])
+            # 마지막으로 yCrCb2를 다시 BGR 형태로 변경합니다.
+            yCrCbDst = cv.cvtColor(yCrCb2, cv.COLOR_YCrCb2BGR)
+            self.filesave(yCrCbDst) # 파일 저장 및 출력
+        except Exception as e:
+            messagebox.showinfo("예외가 발생했습니다", e)
+
+
     def combination(self):
         try:
             global pre_picture_path
