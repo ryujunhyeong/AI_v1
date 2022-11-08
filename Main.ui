@@ -194,9 +194,9 @@
      <property name="geometry">
       <rect>
        <x>370</x>
-       <y>30</y>
+       <y>80</y>
        <width>271</width>
-       <height>411</height>
+       <height>361</height>
       </rect>
      </property>
      <property name="title">
@@ -219,6 +219,29 @@
       </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_fin_path">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>91</width>
+        <height>17</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>파일 저장 경로</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEdit_fin_path">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>30</y>
+        <width>251</width>
+        <height>25</height>
+       </rect>
       </property>
      </widget>
     </widget>
@@ -397,6 +420,54 @@
      </property>
      <property name="text">
       <string>픽셀 반전</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_5">
+     <property name="geometry">
+      <rect>
+       <x>370</x>
+       <y>50</y>
+       <width>111</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>회전각도(-180~180)</string>
+     </property>
+    </widget>
+    <widget class="QDoubleSpinBox" name="doubleSpinBox_trans">
+     <property name="geometry">
+      <rect>
+       <x>480</x>
+       <y>50</y>
+       <width>61</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="minimum">
+      <double>-180.000000000000000</double>
+     </property>
+     <property name="maximum">
+      <double>360.000000000000000</double>
+     </property>
+     <property name="singleStep">
+      <double>2.000000000000000</double>
+     </property>
+     <property name="value">
+      <double>0.000000000000000</double>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_trans">
+     <property name="geometry">
+      <rect>
+       <x>550</x>
+       <y>50</y>
+       <width>89</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>회전</string>
      </property>
     </widget>
    </widget>

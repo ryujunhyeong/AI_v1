@@ -14,6 +14,7 @@ root= Tk()
 root.withdraw()
 pre_picture_path = []
 add_picture_path = []
+after_picture_path = []
 def resource_path(relative_path):
     base_path = getattr(sys, '_MEIPASS', os.path.dirname(
         os.path.abspath(__file__)))
@@ -38,8 +39,10 @@ class MainWindow(base1, form1):
             self.pushButton_unsharp.clicked.connect(self.unsharp)
             self.pushButton_PixelBlending.clicked.connect(self.combination)
             self.comboBox_chk.currentTextChanged.connect(self.comb)
+            self.pushButton_trans.clicked.connect(self.trans)
         except Exception as e:
             messagebox.showinfo("예외가 발생했습니다", e)
+    
     def comb(self):
         if self.comboBox_chk.currentText()=="산술 및 논리 연산":
             self.pushButton_histogram.setText("픽셀 AND")
@@ -73,6 +76,7 @@ class MainWindow(base1, form1):
             self.picture_after.setPixmap(QPixmap(newfilename[0]+"_change."+newfilename[1]))
             after_picture_path=newfilename[0]+"_change."+newfilename[1]
             print(after_picture_path)
+            self.lineEdit_fin_path.setText(after_picture_path)
         except Exception as e:
             messagebox.showinfo("예외가 발생했습니다", e)
 
@@ -93,7 +97,19 @@ class MainWindow(base1, form1):
             self.picture_add.setPixmap(QPixmap(add_picture_path[0]))
         except Exception as e:
             messagebox.showinfo("예외가 발생했습니다", e)
-
+    def trans(self):
+        try:
+            global after_picture_path
+            img = cv.imread(after_picture_path)
+            rows,cols = img.shape[:2]
+            # 회전점을 영상 모서리 -> 영상의 중심으로 변경
+            W=self.doubleSpinBox_trans.value()   #가중치 설정
+            M = cv.getRotationMatrix2D(((cols-1)/2.0,(rows-1)/2.0),W,1)
+            output_img = cv.warpAffine(img,M,(cols*1,rows*1),flags = cv.INTER_LINEAR)
+            output_img= cv.cvtColor(output_img,cv.COLOR_RGB2BGR)
+            self.filesave(output_img) # 파일 저장 및 출력
+        except Exception as e:
+            messagebox.showinfo("예외가 발생했습니다", e)
     def histogram(self): # 히스토그램 평활화
         try:
             global pre_picture_path
