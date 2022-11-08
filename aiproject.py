@@ -498,8 +498,10 @@ if __name__ == '__main__':
     app = QApplication(sys.argv)
     win = MainWindow()
     widget = QtWidgets.QStackedWidget()
-    widget.setFixedWidth(830)
-    widget.setFixedHeight(500)
+    widget.setFixedWidth(1620)
+    widget.setFixedHeight(1040)
+    # widget.setFixedWidth(940) small version
+    # widget.setFixedHeight(530)
     widget.addWidget(win)
     widget.show()
     app.exec_()
