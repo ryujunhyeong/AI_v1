@@ -7,14 +7,20 @@
     <x>0</x>
     <y>0</y>
     <width>1638</width>
-    <height>1129</height>
+    <height>1091</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QGroupBox" name="groupBox">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
     <property name="geometry">
      <rect>
       <x>10</x>
@@ -30,31 +36,18 @@
       <bold>true</bold>
      </font>
     </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(255, 255, 255, 60);</string>
+    </property>
     <property name="title">
      <string>사진 수정 툴</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
     </property>
-    <widget class="QLabel" name="label">
-     <property name="geometry">
-      <rect>
-       <x>290</x>
-       <y>150</y>
-       <width>71</width>
-       <height>91</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string/>
-     </property>
-     <property name="pixmap">
-      <pixmap>../../Downloads/free-icon-right-arrow-776864.png</pixmap>
-     </property>
-     <property name="scaledContents">
-      <bool>true</bool>
-     </property>
-    </widget>
     <widget class="QGroupBox" name="groupBox_4">
      <property name="geometry">
       <rect>
@@ -71,6 +64,12 @@
        <bold>true</bold>
       </font>
      </property>
+     <property name="autoFillBackground">
+      <bool>false</bool>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgba(127, 127, 127, 60);</string>
+     </property>
      <property name="title">
       <string>사진 1</string>
      </property>
@@ -82,6 +81,16 @@
         <width>111</width>
         <height>41</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>11</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border-image: url(C:/Users/rjh68/Documents/AI_v1/ui이미지/버튼ui.png);</string>
       </property>
       <property name="text">
        <string>경로</string>
@@ -96,6 +105,9 @@
         <height>41</height>
        </rect>
       </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgba(255, 255, 255, 150);</string>
+      </property>
      </widget>
      <widget class="QLabel" name="picture_pre">
       <property name="geometry">
@@ -105,6 +117,16 @@
         <width>451</width>
         <height>381</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>11</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgba(255, 255, 255, 100);</string>
       </property>
       <property name="text">
        <string>사진 없음</string>
@@ -133,6 +155,9 @@
        <bold>true</bold>
       </font>
      </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgba(127, 127, 127, 60);</string>
+     </property>
      <property name="title">
       <string>사진 2</string>
      </property>
@@ -144,6 +169,16 @@
         <width>451</width>
         <height>381</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>11</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgba(255, 255, 255, 100);</string>
       </property>
       <property name="text">
        <string>사진 없음</string>
@@ -164,6 +199,16 @@
         <height>41</height>
        </rect>
       </property>
+      <property name="font">
+       <font>
+        <pointsize>11</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border-image: url(C:/Users/rjh68/Documents/AI_v1/ui이미지/버튼ui.png);</string>
+      </property>
       <property name="text">
        <string>경로</string>
       </property>
@@ -176,6 +221,9 @@
         <width>341</width>
         <height>41</height>
        </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgba(255, 255, 255, 150);</string>
       </property>
      </widget>
     </widget>
@@ -195,6 +243,9 @@
        <bold>true</bold>
       </font>
      </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgba(127, 127, 127, 60);</string>
+     </property>
      <property name="title">
       <string>수정 후 사진</string>
      </property>
@@ -206,6 +257,16 @@
         <width>521</width>
         <height>811</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>11</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgba(255, 255, 255, 100);</string>
       </property>
       <property name="text">
        <string>사진 없음</string>
@@ -226,6 +287,16 @@
         <height>31</height>
        </rect>
       </property>
+      <property name="font">
+       <font>
+        <pointsize>11</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgba(255, 255, 255, 0);</string>
+      </property>
       <property name="text">
        <string>파일 저장 경로</string>
       </property>
@@ -238,6 +309,9 @@
         <width>521</width>
         <height>41</height>
        </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgba(255, 255, 255, 150);</string>
       </property>
      </widget>
     </widget>
@@ -257,6 +331,9 @@
        <bold>true</bold>
       </font>
      </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgba(127, 127, 127, 60);</string>
+     </property>
      <property name="title">
       <string>색상 설정</string>
      </property>
@@ -272,6 +349,16 @@
         <height>30</height>
        </rect>
       </property>
+      <property name="font">
+       <font>
+        <pointsize>11</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgba(255, 255, 255, 0);</string>
+      </property>
       <property name="text">
        <string>컬러</string>
       </property>
@@ -284,6 +371,16 @@
         <width>71</width>
         <height>30</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>11</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgba(255, 255, 255, 0);</string>
       </property>
       <property name="text">
        <string>흑백</string>
@@ -298,6 +395,9 @@
        <width>141</width>
        <height>161</height>
       </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgba(255, 255, 255, 0);</string>
      </property>
      <property name="text">
       <string/>
@@ -325,6 +425,9 @@
        <bold>true</bold>
       </font>
      </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgba(127, 127, 127, 60);</string>
+     </property>
      <property name="title">
       <string>회전 각도 조절</string>
      </property>
@@ -336,6 +439,16 @@
         <width>71</width>
         <height>41</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>11</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border-image: url(C:/Users/rjh68/Documents/AI_v1/ui이미지/버튼ui.png);</string>
       </property>
       <property name="text">
        <string>회전</string>
@@ -357,6 +470,9 @@
         <bold>true</bold>
        </font>
       </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgba(255, 255, 255, 0);</string>
+      </property>
       <property name="text">
        <string>각도(-180~180)</string>
       </property>
@@ -369,6 +485,16 @@
         <width>91</width>
         <height>41</height>
        </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>11</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgba(255, 255, 255, 150);</string>
       </property>
       <property name="minimum">
        <double>-180.000000000000000</double>
@@ -400,6 +526,9 @@
        <bold>true</bold>
       </font>
      </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgba(127, 127, 127, 60);</string>
+     </property>
      <property name="title">
       <string>MODE</string>
      </property>
@@ -415,7 +544,12 @@
       <property name="font">
        <font>
         <pointsize>11</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
        </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgba(255, 255, 255, 255);</string>
       </property>
       <item>
        <property name="text">
@@ -430,6 +564,11 @@
       <item>
        <property name="text">
         <string>영상 특징 검출</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>모폴로지(Morphology) 기법</string>
        </property>
       </item>
      </widget>
@@ -451,6 +590,9 @@
        <bold>true</bold>
       </font>
      </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgba(127, 127, 127, 60);</string>
+     </property>
      <property name="title">
       <string>기능 선택</string>
      </property>
@@ -469,6 +611,9 @@
         <weight>75</weight>
         <bold>true</bold>
        </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgba(255, 255, 255, 255);</string>
       </property>
       <property name="maximum">
        <double>1.000000000000000</double>
@@ -496,6 +641,9 @@
         <bold>true</bold>
        </font>
       </property>
+      <property name="styleSheet">
+       <string notr="true">border-image: url(C:/Users/rjh68/Documents/AI_v1/ui이미지/버튼ui.png);</string>
+      </property>
       <property name="text">
        <string>픽셀 결합</string>
       </property>
@@ -515,6 +663,9 @@
         <weight>75</weight>
         <bold>true</bold>
        </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border-image: url(C:/Users/rjh68/Documents/AI_v1/ui이미지/버튼ui.png);</string>
       </property>
       <property name="text">
        <string>종료</string>
@@ -536,6 +687,9 @@
         <bold>true</bold>
        </font>
       </property>
+      <property name="styleSheet">
+       <string notr="true">border-image: url(C:/Users/rjh68/Documents/AI_v1/ui이미지/버튼ui.png);</string>
+      </property>
       <property name="text">
        <string>픽셀 마스크</string>
       </property>
@@ -555,6 +709,9 @@
         <weight>75</weight>
         <bold>true</bold>
        </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border-image: url(C:/Users/rjh68/Documents/AI_v1/ui이미지/버튼ui.png);</string>
       </property>
       <property name="text">
        <string>픽셀 반전</string>
@@ -576,6 +733,9 @@
         <bold>true</bold>
        </font>
       </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgba(255, 255, 255, 0);</string>
+      </property>
       <property name="text">
        <string>가중치 (0~1)</string>
       </property>
@@ -595,6 +755,9 @@
         <weight>75</weight>
         <bold>true</bold>
        </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">border-image: url(C:/Users/rjh68/Documents/AI_v1/ui이미지/버튼ui.png);</string>
       </property>
       <property name="text">
        <string>픽셀 AND</string>
@@ -616,12 +779,33 @@
         <bold>true</bold>
        </font>
       </property>
+      <property name="styleSheet">
+       <string notr="true">border-image: url(C:/Users/rjh68/Documents/AI_v1/ui이미지/버튼ui.png);</string>
+      </property>
       <property name="text">
        <string>픽셀 OR</string>
       </property>
      </widget>
     </widget>
    </widget>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>-5</x>
+      <y>1</y>
+      <width>1641</width>
+      <height>1071</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-image: url(C:/Users/rjh68/Documents/AI_v1/ui이미지/배경4.jpeg);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <zorder>label_2</zorder>
+   <zorder>groupBox</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">

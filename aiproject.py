@@ -64,6 +64,14 @@ class MainWindow(base1, form1):
             self.pushButton_smooth.setText("프르윗 에지")
             self.pushButton_unsharp.setText("캐니 에지")
             self.pushButton_PixelBlending.setText("가우시안-라플라시안")
+            
+        elif self.comboBox_chk.currentText()=="모폴로지(Morphology) 기법":
+            self.pushButton_histogram.setText("팽창 연산")
+            self.pushButton_gaussianBlur.setText("침식 연산")
+            self.pushButton_smooth.setText("열림 연산")
+            self.pushButton_unsharp.setText("닫힘 연산")
+            self.pushButton_PixelBlending.setText("Original img")
+            
     def filesave(self,output_img):
         try:
             global after_picture_path
@@ -189,6 +197,14 @@ class MainWindow(base1, form1):
                 absY = cv.convertScaleAbs(y)
                 output_img = cv.addWeighted(absX, 0.5, absY, 0.5, 0)
                 self.filesave(output_img) # 파일 저장 및 출력
+                
+            elif self.comboBox_chk.currentText()=="모폴로지(Morphology) 기법":
+                
+                print(pre_picture_path[0])
+                img=cv.imread(pre_picture_path[0])
+                kernel = np.ones((3,3),np.uint8)
+                dilation = cv.dilate(img,kernel,iterations = 1)
+                self.filesave(dilation) # 파일 저장 및 출력
         except Exception as e:
             messagebox.showinfo("예외가 발생했습니다", e)
 
@@ -268,6 +284,13 @@ class MainWindow(base1, form1):
                 absY = cv.convertScaleAbs(y)
                 output_img = cv.addWeighted(absX, 0.5, absY, 0.5, 0)
                 self.filesave(output_img) # 파일 저장 및 출력
+            
+            elif self.comboBox_chk.currentText()=="모폴로지(Morphology) 기법":
+                print(pre_picture_path[0])
+                img=cv.imread(pre_picture_path[0])
+                kernel = np.ones((3,3),np.uint8)
+                dilation = cv.erode(img,kernel,iterations = 1)
+                self.filesave(dilation) # 파일 저장 및 출력
         except Exception as e:
             messagebox.showinfo("예외가 발생했습니다", e)
     
@@ -339,6 +362,14 @@ class MainWindow(base1, form1):
                 absY = cv.convertScaleAbs(y)
                 output_img = cv.addWeighted(absX, 0.5, absY, 0.5, 0)
                 self.filesave(output_img) # 파일 저장 및 출력
+                
+            elif self.comboBox_chk.currentText()=="모폴로지(Morphology) 기법":
+                
+                print(pre_picture_path[0])
+                img=cv.imread(pre_picture_path[0])
+                kernel = np.ones((5,5),np.uint8)
+                opening1 = cv.morphologyEx(img, cv.MORPH_OPEN, kernel)
+                self.filesave(opening1) # 파일 저장 및 출력 
         except Exception as e:
             messagebox.showinfo("예외가 발생했습니다", e)
 
@@ -421,6 +452,15 @@ class MainWindow(base1, form1):
                 # 케니 에지 컨벌루션 연산하기
                 output_img = cv.Canny(gray_img,100,250)
                 self.filesave(output_img) # 파일 저장 및 출력
+            
+            elif self.comboBox_chk.currentText()=="모폴로지(Morphology) 기법":
+                
+                print(pre_picture_path[0])
+                img=cv.imread(pre_picture_path[0])
+                kernel = np.ones((5,5),np.uint8)
+                closing = cv.morphologyEx(img, cv.MORPH_CLOSE, kernel)
+                self.filesave(closing) # 파일 저장 및 출력 
+                
         except Exception as e:
             messagebox.showinfo("예외가 발생했습니다", e)
 
@@ -489,6 +529,11 @@ class MainWindow(base1, form1):
                 # 라플라시안 에지 컨벌루션 연산하기
                 laplacian = cv.Laplacian(blur,-1,1)
                 self.filesave(laplacian) # 파일 저장 및 출력
+            
+            elif self.comboBox_chk.currentText()=="모폴로지(Morphology) 기법":
+                print(pre_picture_path[0])
+                img=cv.imread(pre_picture_path[0])
+                self.filesave(img) # 파일 저장 및 출력
         except Exception as e:
             messagebox.showinfo("예외가 발생했습니다", e)
     def logout(self): # 종료버튼 동작 구동 하는 부분
